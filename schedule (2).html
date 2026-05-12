@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule Your Call — Gulf Stream Boat Club Tierra Verde</title>
+  <meta name="description" content="Book a call with a Gulf Stream Boat Club Tierra Verde membership advisor. About 15 minutes — plans, fleet, and how membership works on the Gulf side.">
+  <link rel="icon" href="https://www.gulfstreamboatclub.com/wp-content/uploads/2025/05/gbc-favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #110945;
+      --sky: #3ebff2;
+      --white: #ffffff;
+      --light-gray: #f7f8fb;
+      --mid-gray: #e4e7ed;
+      --text-dark: #110945;
+      --text-mid: #4a4d6e;
+      --text-light: #8a8da8;
+      --font-header: 'Josefin Sans', sans-serif;
+      --font-body: 'Montserrat', sans-serif;
+      --max-width: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    h1, h2, h3, h4 {
+      font-family: var(--font-header);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--sky);
+      display: block;
+      margin-bottom: 16px;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 72px;
+      padding: 0 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17,9,69,0.07);
+      transition: box-shadow 0.3s;
+    }
+    .nav.scrolled { box-shadow: 0 2px 24px rgba(17,9,69,0.09); }
+    .nav-logo img { height: 34px; width: auto; }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-phone {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+    .nav-phone:hover { color: var(--sky); }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 30px;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      line-height: 1;
+    }
+    .btn-navy { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .btn-navy:hover { background: transparent; color: var(--navy); }
+    .btn-sky { background: var(--sky); color: var(--white); border-color: var(--sky); padding: 15px 38px; font-size: 12px; }
+    .btn-sky:hover { background: transparent; color: var(--sky); }
+
+    /* PAGE HERO (compact) */
+    .page-hero {
+      position: relative;
+      min-height: 52vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://www.gulfstreamboatclub.com/wp-content/uploads/2025/05/082699_220bce18b72a4b3fb356969dd1dbc445mv2-2.avif');
+      background-size: cover;
+      background-position: center 45%;
+    }
+    .page-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        110deg,
+        rgba(17,9,69,0.90) 0%,
+        rgba(17,9,69,0.65) 55%,
+        rgba(17,9,69,0.25) 100%
+      );
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: var(--max-width);
+      width: 100%;
+      margin: 0 auto;
+      padding: 120px 48px 64px;
+    }
+    .page-hero-content .eyebrow {
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.7s 0.3s cubic-bezier(.22,.68,0,1.2) forwards;
+    }
+    .page-hero-h1 {
+      font-size: clamp(30px, 4.2vw, 54px);
+      color: var(--white);
+      max-width: 680px;
+      margin-bottom: 18px;
+      line-height: 1.1;
+      letter-spacing: 0.05em;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.85s 0.5s cubic-bezier(.22,.68,0,1.2) forwards;
+    }
+    .page-hero-sub {
+      font-size: clamp(14px, 1.6vw, 17px);
+      color: rgba(255,255,255,0.78);
+      font-weight: 300;
+      font-style: italic;
+      max-width: 520px;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: fadeUp 0.8s 0.7s cubic-bezier(.22,.68,0,1.2) forwards;
+    }
+
+    /* STEP INDICATOR */
+    .step-bar {
+      background: var(--navy);
+      padding: 20px 48px;
+      border-top: 3px solid var(--sky);
+    }
+    .step-bar-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 0;
+    }
+    .step-item { display: flex; align-items: center; gap: 12px; flex: 1; }
+    .step-num {
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .step-num.done {
+      background: rgba(62,191,242,0.25);
+      color: var(--sky);
+      border: 1px solid var(--sky);
+    }
+    .step-num.active {
+      background: var(--sky);
+      color: var(--white);
+    }
+    .step-num.upcoming {
+      background: rgba(255,255,255,0.06);
+      color: rgba(255,255,255,0.3);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .step-label {
+      font-family: var(--font-body);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .step-label.done { color: rgba(255,255,255,0.45); }
+    .step-label.active { color: var(--white); }
+    .step-label.upcoming { color: rgba(255,255,255,0.3); }
+    .step-connector {
+      width: 48px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin: 0 16px;
+      flex-shrink: 0;
+    }
+
+    /* SCHEDULER SECTION */
+    .scheduler-section {
+      padding: 80px 48px 96px;
+      background: var(--white);
+    }
+    .scheduler-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 5fr 7fr;
+      gap: 64px;
+      align-items: start;
+    }
+    .scheduler-left h2 { font-size: clamp(26px, 3.2vw, 42px); margin-bottom: 22px; }
+    .scheduler-left > p {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.9;
+      margin-bottom: 36px;
+    }
+    .expect-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .expect-item {
+      display: flex;
+      gap: 18px;
+      align-items: flex-start;
+    }
+    .expect-num {
+      font-family: var(--font-header);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--sky);
+      flex-shrink: 0;
+      padding-top: 2px;
+      letter-spacing: 0.04em;
+    }
+    .expect-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .expect-text strong {
+      font-family: var(--font-header);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .expect-text span {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      padding-top: 32px;
+      border-top: 1px solid var(--mid-gray);
+    }
+    .contact-item { display: flex; flex-direction: column; gap: 5px; }
+    .contact-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sky);
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-value:hover { color: var(--sky); }
+
+    .scheduler-right {
+      background: var(--light-gray);
+      padding: 36px 36px;
+      border-top: 3px solid var(--sky);
+      min-height: 700px;
+    }
+    .meetings-iframe-container { width: 100%; min-height: 640px; }
+
+    /* PLANS PREVIEW */
+    .plans-section {
+      background: var(--navy);
+      padding: 80px 48px;
+    }
+    .plans-section .eyebrow { text-align: center; }
+    .plans-section > .section-inner > h2 {
+      color: var(--white);
+      text-align: center;
+      font-size: clamp(24px, 3.2vw, 38px);
+      margin-bottom: 14px;
+    }
+    .plans-section .plans-sub {
+      text-align: center;
+      color: rgba(255,255,255,0.55);
+      font-size: 14px;
+      margin-bottom: 48px;
+      font-family: var(--font-body);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section-inner { max-width: var(--max-width); margin: 0 auto; }
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 14px;
+    }
+    .plan-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 28px 20px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .plan-card:hover {
+      background: rgba(62,191,242,0.09);
+      border-color: rgba(62,191,242,0.35);
+    }
+    .plan-card.featured {
+      background: var(--sky);
+      border-color: var(--sky);
+    }
+    .plan-badge {
+      position: absolute;
+      top: 0; right: 0;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 6px 11px;
+      font-family: var(--font-body);
+    }
+    .plan-name {
+      font-family: var(--font-header);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .plan-price {
+      font-family: var(--font-header);
+      font-size: 26px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 4px;
+    }
+    .plan-price-sub {
+      font-size: 11px;
+      color: rgba(255,255,255,0.58);
+      font-family: var(--font-body);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .plan-divider { height: 1px; background: rgba(255,255,255,0.14); margin-bottom: 18px; }
+    .plan-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+    .plan-features li {
+      font-size: 11px;
+      color: rgba(255,255,255,0.78);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      padding-left: 14px;
+      position: relative;
+    }
+    .plan-features li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 7px;
+      width: 7px; height: 1px;
+      background: rgba(255,255,255,0.4);
+    }
+    .plan-card.featured .plan-features li { color: rgba(255,255,255,0.94); }
+    .plans-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.38);
+      font-family: var(--font-body);
+      font-style: italic;
+    }
+    .plans-cta {
+      text-align: center;
+      margin-top: 40px;
+    }
+    .plans-cta p {
+      color: rgba(255,255,255,0.6);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: var(--navy);
+      padding: 56px 48px;
+      border-top: 3px solid rgba(62,191,242,0.3);
+    }
+    .footer-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 40px;
+    }
+    .footer-brand-name {
+      font-family: var(--font-header);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 6px;
+    }
+    .footer-brand-loc {
+      font-family: var(--font-body);
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.08em;
+    }
+    .footer-tagline {
+      font-family: var(--font-header);
+      font-size: 14px;
+      font-style: italic;
+      color: rgba(255,255,255,0.55);
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: 0.04em;
+    }
+    .footer-legal {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      font-family: var(--font-body);
+      text-align: right;
+      line-height: 2;
+    }
+    .footer-legal a { color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--sky); }
+    .footer-legal .footer-copy { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 0.1s; }
+    .reveal-d2 { transition-delay: 0.2s; }
+    .reveal-d3 { transition-delay: 0.3s; }
+    .reveal-d4 { transition-delay: 0.4s; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1080px) {
+      .plans-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 900px) {
+      .scheduler-inner { grid-template-columns: 1fr; gap: 48px; }
+      .step-bar-inner { flex-wrap: wrap; gap: 12px; }
+      .step-connector { display: none; }
+      .step-item { flex: 0 1 auto; }
+    }
+    @media (max-width: 680px) {
+      .nav { padding: 0 20px; }
+      .nav-phone { display: none; }
+      .scheduler-section, .plans-section { padding: 64px 24px; }
+      .step-bar { padding: 16px 24px; }
+      .page-hero-content { padding: 120px 24px 48px; }
+      .scheduler-right { padding: 24px 20px; }
+      .plans-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .footer { padding: 40px 24px; }
+      .footer-inner { grid-template-columns: 1fr; text-align: center; gap: 24px; }
+      .footer-legal { text-align: center; }
+    }
+    @media (max-width: 440px) {
+      .plans-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="mainNav">
+    <div class="nav-logo">
+      <a href="index.html">
+        <img src="https://www.gulfstreamboatclub.com/wp-content/uploads/2025/05/Gulf-Stream-Boat-Club-full-color.avif" alt="Gulf Stream Boat Club" />
+      </a>
+    </div>
+    <div class="nav-right">
+      <a href="tel:18885980366" class="nav-phone">(888) 598-0366</a>
+      <a href="#scheduler" class="btn btn-navy">Schedule Your Call</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="eyebrow">Step 2 of 3 &nbsp;&mdash;&nbsp; Tierra Verde</span>
+      <h1 class="page-hero-h1">One Conversation Away From the Gulf.</h1>
+      <p class="page-hero-sub">Pick a time that works for you. We'll walk through everything — no pressure, just answers.</p>
+    </div>
+  </section>
+
+  <!-- STEP INDICATOR -->
+  <div class="step-bar">
+    <div class="step-bar-inner">
+      <div class="step-item">
+        <div class="step-num done">&#10003;</div>
+        <span class="step-label done">Info Submitted</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item">
+        <div class="step-num active">2</div>
+        <span class="step-label active">Schedule Your Call</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-item">
+        <div class="step-num upcoming">3</div>
+        <span class="step-label upcoming">Get on the Water</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCHEDULER SECTION -->
+  <section class="scheduler-section" id="scheduler">
+    <div class="scheduler-inner">
+
+      <!-- LEFT: context + what to expect -->
+      <div class="scheduler-left reveal">
+        <span class="eyebrow">Almost There</span>
+        <h2>Book Your Membership Call</h2>
+        <p>A Gulf Stream advisor will walk you through everything on your call — plans, access, the fleet, and what day-to-day membership looks like at Tierra Verde. Most calls take about 15 minutes.</p>
+
+        <ul class="expect-list">
+          <li class="expect-item">
+            <span class="expect-num">01</span>
+            <div class="expect-text">
+              <strong>Your Questions, Answered</strong>
+              <span>We'll cover whichever plan fits your lifestyle and how reciprocal access works across all GBC locations — Tierra Verde, Tampa, Bradenton, and our East Coast clubs.</span>
+            </div>
+          </li>
+          <li class="expect-item">
+            <span class="expect-num">02</span>
+            <div class="expect-text">
+              <strong>The Tierra Verde Advantage</strong>
+              <span>What's unique here — direct Gulf access from Port 32 Marina, minutes to Shell Key and Egmont Key, family pontoons and offshore-ready twins with heads and changing rooms, and a marina that genuinely feels like home base.</span>
+            </div>
+          </li>
+          <li class="expect-item">
+            <span class="expect-num">03</span>
+            <div class="expect-text">
+              <strong>No Pressure, Ever</strong>
+              <span>This is an information call, not a sales pitch. If it's a fit, great. If not, we'll tell you honestly.</span>
+            </div>
+          </li>
+          <li class="expect-item">
+            <span class="expect-num">04</span>
+            <div class="expect-text">
+              <strong>Ready to Move Fast?</strong>
+              <span>If you've already reviewed pricing below and want to join, we can handle everything on the same call.</span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="contact-details">
+          <div class="contact-item">
+            <span class="contact-label">Prefer to Call Us Directly</span>
+            <a href="tel:18885980366" class="contact-value">(888) 598-0366</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Email</span>
+            <a href="mailto:sales@gulfstreamboatclub.com" class="contact-value">sales@gulfstreamboatclub.com</a>
+          </div>
+          <div class="contact-item">
+            <span class="contact-label">Location</span>
+            <span class="contact-value" style="cursor:default;">240 Madonna Blvd, Tierra Verde, FL 33715</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: HubSpot meetings embed -->
+      <div class="scheduler-right reveal reveal-d2">
+        <!-- Start of Meetings Embed Script -->
+        <div class="meetings-iframe-container" data-src="https://meetings.hubspot.com/ryan-luker/meta-tierra-verde-scheduled-phone-call-clone?embed=true"></div>
+        <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+        <!-- End of Meetings Embed Script -->
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLANS PREVIEW -->
+  <section class="plans-section" id="plans">
+    <div class="section-inner">
+      <span class="eyebrow">Review Before Your Call</span>
+      <h2>Flexible Plans Designed for Your Lifestyle</h2>
+      <p class="plans-sub">No boat payments. No dock fees. No surprises. Have questions about a specific plan? We'll cover it on your call.</p>
+      <div class="plans-grid">
+        <div class="plan-card reveal reveal-d1">
+          <p class="plan-name">25 Hours</p>
+          <p class="plan-price">$2,950</p>
+          <p class="plan-price-sub">One-time &middot; 2-year access</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>25 hours over 2 years</li>
+            <li>2–8 hrs per reservation</li>
+            <li>4 advance reservations</li>
+            <li>Destination club access</li>
+            <li>Ideal for busy lifestyles &amp; new boaters</li>
+          </ul>
+        </div>
+        <div class="plan-card reveal reveal-d2">
+          <p class="plan-name">50 Hours</p>
+          <p class="plan-price">$4,950</p>
+          <p class="plan-price-sub">One-time &middot; 2-year access</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>50 hours over 2 years</li>
+            <li>2–8 hrs per reservation</li>
+            <li>4 advance reservations</li>
+            <li>Destination club access</li>
+            <li>Ideal for frequent travelers</li>
+          </ul>
+        </div>
+        <div class="plan-card reveal reveal-d3">
+          <p class="plan-name">6 Months Unlimited</p>
+          <p class="plan-price">$3,500</p>
+          <p class="plan-price-sub">+ $499/mo &times; 5 &middot; Seasonal</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>Unlimited use for 6 months</li>
+            <li>2–8 hrs per reservation</li>
+            <li>4 advance reservations</li>
+            <li>Destination club access</li>
+            <li>Perfect for seasonal residents</li>
+          </ul>
+        </div>
+        <div class="plan-card reveal reveal-d4">
+          <p class="plan-name">12 Months Unlimited</p>
+          <p class="plan-price">$4,500</p>
+          <p class="plan-price-sub">+ $499/mo &times; 11 &middot; Annual</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>Unlimited use for 12 months</li>
+            <li>2–8 hrs per reservation</li>
+            <li>4 advance reservations</li>
+            <li>Destination club access</li>
+            <li>Perfect for avid boaters</li>
+          </ul>
+        </div>
+        <div class="plan-card featured reveal reveal-d4">
+          <span class="plan-badge">Best Value</span>
+          <p class="plan-name">GBC Reserve</p>
+          <p class="plan-price">$10,000</p>
+          <p class="plan-price-sub">+ $499/mo &middot; Auto-renews</p>
+          <div class="plan-divider"></div>
+          <ul class="plan-features">
+            <li>Unlimited use, no end date</li>
+            <li>2–8 hrs per reservation</li>
+            <li>60-day cancellation notice</li>
+            <li>All Florida locations</li>
+            <li>Our best value plan</li>
+          </ul>
+        </div>
+      </div>
+      <p class="plans-note">All plans include access to Tierra Verde, Tampa, Bradenton, and our East Coast locations.</p>
+      <div class="plans-cta">
+        <p>Still have questions? Your advisor will cover everything on your scheduled call.</p>
+        <a href="#scheduler" class="btn btn-sky">Back to Scheduler</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <p class="footer-brand-name">Gulf Stream Boat Club</p>
+        <p class="footer-brand-loc">Tierra Verde &nbsp;&middot;&nbsp; 240 Madonna Blvd, Tierra Verde, FL 33715</p>
+      </div>
+      <p class="footer-tagline">Work on your bucket list,<br>not your to-do list.</p>
+      <div class="footer-legal">
+        <p class="footer-copy">&copy; 2026 Gulf Stream Boat Club. All Rights Reserved.</p>
+        <p>
+          <a href="https://www.gulfstreamboatclub.com/privacy-policy/">Privacy Policy</a>
+          &nbsp;&middot;&nbsp;
+          <a href="https://www.gulfstreamboatclub.com/terms-of-use/">Terms of Use</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sticky nav
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
